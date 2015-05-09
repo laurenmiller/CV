@@ -1,0 +1,369 @@
+\documentclass[10pt]{article}
+
+%PACKAGES
+\usepackage{array, xcolor}
+%\usepackage{lipsum}
+\usepackage{url}
+\usepackage[utf8]{inputenc} 
+
+  \makeatletter
+  \let\saved@bibitem\@bibitem
+  \makeatother
+\usepackage{bibentry}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xparse}
+\usepackage{sectsty}
+\usepackage{longtable}
+
+%enable short or long form toggle
+\usepackage{ifthen}
+\newboolean{long}   
+\setboolean{long}{true}
+
+%FORMATTING
+\usepackage[margin=.75 in]{geometry}
+\setlength{\parindent}{0cm}
+
+%APPEARANCE
+%\renewcommand{\familydefault}{\sfdefault}  %uncomment to use a sanserif font
+\definecolor{lightgray}{gray}{0.8}
+\newcolumntype{L}{>{\raggedleft}p{0.12\textwidth}}
+\newcolumntype{R}{ p{0.84\textwidth}}
+%\setlength{\columnsep}{.0 \textwidth}
+\newcommand\VRule{\color{lightgray}\vrule width 0.5pt}
+
+%LIST FORMAT
+\newenvironment{cvlist}{
+  \begin{itemize}[leftmargin=8 pt]
+\vspace{-20 pt}
+\renewcommand{\labelitemi}{-}
+  \setlength{\itemsep}{0pt}
+  \setlength{\parskip}{0pt}
+  \setlength{\parsep}{0pt}
+ % \setlength{\itemindent}{-10pt}
+}{
+\vspace{-10 pt}
+  \end{itemize}
+}
+
+\usepackage{enumitem}
+\usepackage{mdwlist}
+
+%BIBLIST FORMAT
+\newenvironment{cvbiblist}{
+  \begin{enumerate}[resume,topsep=0 pt, parsep=0 pt, itemsep=4 pt, leftmargin=20 pt,label={[\arabic*]}]
+\vspace{-0 pt}
+}{
+%\vspace{-10 pt}
+  \end{enumerate}
+}
+
+
+%TABLE FORMAT
+\newenvironment{cvtable}{
+\vspace{-10 pt}
+\begin{longtable}{L!{\VRule }R}
+%\setlength{\tabcolsep}{50pt}
+}{
+\end{longtable}
+}
+
+%\newcommand{\cvitem}[6]{
+%{#1} &\textbf{{#2}}  {#3}\\
+%{#6} &\emph{{#4}}\\
+%     &{#5}\\
+%\vspace{-10 pt}
+%}
+
+%SECTION FORMAT
+
+\sectionfont{\bfseries \large\selectfont}
+\newcommand{\cvsect}[1]{
+\vspace{-10  pt}
+\section*{#1}
+\vspace{-5 pt}
+}
+
+%ITEM FORMAT
+\DeclareDocumentCommand\cvitem{m m m m g g}{%
+{#1}                    &\textbf{{#2}} \hfill {#3} \\
+ \IfNoValueF {#6} { #6} &\emph{{#4}}  
+                         \ifthenelse{\boolean{long}}{\IfNoValueF {#5} {\\ & {#5}}}{}%
+\\[5 pt]
+    }%}graded
+
+\title{\vspace{-.5 in}\bfseries\huge Lauren Mohr Miller}
+%\author{LaurenMiller@u.northwestern.edu}
+\date{}
+\begin{document}
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+%bstctlcite{IEEEtranmy:BSTcontrol}
+
+
+%\begin{minipage}[ht]{0.48\textwidth}
+%LaurenMiller@u.northwestern.edu\\
+%(631)831-0766\\\url{http://nxr.northwestern.edu/people/lauren-miller}
+%\end{minipage}
+%\begin{minipage}[ht]{0.6\textwidth}
+% {Dept.~of Mechanical Engineering\\
+% Northwestern University~\\ 
+% 2145 Sheridan Rd, Tech B224,  Evanston, IL 60208 \\ }
+%\end{minipage}
+
+\vspace{-.75 in}
+\begin{center}
+{Dept.~of Mechanical Engineering, Northwestern University~\\ 
+ 2145 Sheridan Rd, Tech B224,  Evanston, IL 60208 \\
+\small{ \url{http://nxr.northwestern.edu/people/lauren-miller}}\normalsize\\
+ LMiller@u.northwestern.edu \hspace{30 pt} +1(631) 831-0766}
+\end{center}
+\vspace{-10  pt}
+
+% \begin{center}
+%  LaurenMiller@u.northwestern.edu\ \small{ \textbullet}\normalsize~631-831-0766 \\
+% {Dept.~of Mechanical Engineering, Northwestern University~\\ 
+%  2145 Sheridan Rd, Tech B224,  Evanston, IL 60208 \\
+%  \url{http://nxr.northwestern.edu/people/lauren-miller} }
+% \end{center}
+
+
+\cvsect{Research Interests} \hspace{20 pt} %
+Robotics, control of mobile sensors, information-based search, optimal
+control and estimation
+
+
+\cvsect{Education}
+\begin{cvtable}
+  \cvitem{2015}%
+  {Northwestern University}%
+  {Evanston, IL} %
+  {Ph.D. candidate in Mechanical Engineering}%
+  {Advisor: Todd Murphey %
+    \newline Dissertation: Optimal Ergodic Control for Search and
+    Information Acquisition}%
+  {(expected)}
+
+%
+  \cvitem{2013}%
+  {Kellogg School of Management, Northwestern University}%
+  {Evanston, IL}%
+  {Certificate in Management for Scientists and Engineers}
+%
+  \cvitem{2013}%
+  {Northwestern University}%
+  {Evanston, IL}%
+  {M.S. in Mechanical Engineering}%
+  {Thesis: Simultaneous Optimal Parameter and Mode Transition Time
+    Estimation Applied to Traction Modeling}
+%
+  \cvitem{2009}%
+  {Dartmouth College}%
+  {Hanover, NH}%
+  {B.A./B.E. in Engineering Sciences}
+\end{cvtable}
+
+
+%RESEARCH AND PROFESSIONAL EXPERIENCE
+\cvsect{Research and Related Professional Experience}
+ \begin{cvtable}
+   \cvitem{2010-present}%
+{Northwestern University}%
+{Evanston, IL}%
+{Graduate Research Assistant: Neuroscience and Robotics (NxR) Laboratory }%
+{\begin{cvlist}
+  \item Motion Planning for Information Acquisition: Developed a
+    closed-loop algorithm for control of mobile sensors, implemented
+    using a robotic electrosensing platform.
+  \item Ergodic Optimal Control: Formulated a motion planning strategy
+    for robotic search using ergodic theory, information theory, and
+    optimal control.
+  \item Robotic Adaptive Stroke Rehabilitation: Identified a global
+    performance measure for online adaptation of an upper-limb
+    rehabilitation program
+  \item Optimal Estimation Techniques for Hybrid Systems: Developed an
+    algorithm for identifying mode transition times and parameter values
+    in traction models for autonomous vehicles.
+  \end{cvlist}}
+% 
+\cvitem{Fall~2014}%
+{Space Exploration Technologies (SpaceX)}%
+{Hawthorne, CA}%
+{Intern: Guidance, Navigation and Control Group}%
+{\begin{cvlist}
+  \item Developed an algorithm for motion planning on small bodies for a
+    class of hopping
+    rovers % as part of a group of writers and illustrators.
+%\item Traveled to design and manufacturing facilities to facilitate communication between technical writers and design engineers. 
+\end{cvlist}}
+%
+\cvitem{Summer~2014}%
+{NASA Jet Propulsion Laboratory}%
+{La Cañada Flintridge, CA}%
+{Intern: Robotics Mobility Group}%
+{\begin{cvlist}
+  \item Investigated motion planning algorithms for a class of hopping
+    rovers designed to operate in microgravity
+    environments. %Developed an algorithm for motion planning on small bodies for a class of hopping rovers % as part of a group of writers and illustrators.
+% %\item Traveled to design and manufacturing facilities to facilitate communication between technical writers and design engineers. 
+ \end{cvlist}}
+%
+\cvitem{2010}%
+{Dayton T. Brown, Inc.}%
+{Upton, NY}%
+{Technical Writer and Editor}%
+{\begin{cvlist}
+  \item Compiled and edited reference information for private and
+    military mechanical
+    systems.% as part of a group of writers and illustrators.
+%\item Traveled to design and manufacturing facilities toy facilitate communication between technical writers and design engineers. 
+\end{cvlist}}
+%
+\cvitem{Fall 2009}%
+{Helmut Schmidt University}%
+{Hamburg, Germany}{Research assistant: Institute for Automation Technology}%
+{\begin{cvlist}
+    \item Developed a C\# program and Modelica user interface to
+      dynamically generate simulation models from engineering planning
+      data.    
+ \end{cvlist}%
+}
+\newpage
+%
+%
+\cvitem{2008}%
+{Dartmouth College}%
+{Hanover, NH}%
+{Research assistant: Signal Processing and Controls Laboratory}%
+{\begin{cvlist}
+  \item Designed an experimental fixture for magnetic eddy current
+    sensor placement for nondestructive testing. Performed preliminary
+    analysis on system sensitivity and robustness.
+    % \item Designed and implemented a program to interface with an array of sensors, reading and processing signals from multiple microphones, as the foundation for an acoustic beamforming project.
+  \end{cvlist}%
+} 
+%
+\cvitem{2009}%
+{Hypertherm, Inc.}%
+{Hanover, NH}%
+{Industry-sponsored project}%
+{\begin{cvlist}
+  \item Collaborated with a team of students and professional engineers
+    to identify causes of mechanical failures in robotic plasma-cutting
+    systems
+  \item Programmed a robotic testing routine and created a functional
+    prototype for failure prevention. \vspace{-15 pt}
+  \end{cvlist}%
+}
+\end{cvtable}
+%
+ \cvsect{Professional Service and Leadership}
+\begin{cvtable}
+2014-present&\textbf{Chair of the Student Activities Committee}, \href{http://www.ieee-ras.org/}{IEEE Robotics and Automation Society}\\[5pt]
+2014-present&\textbf{Administrative Committee Student Member},  IEEE Robotics and Automation Society\\[5pt]
+%2015-present&\textbf{IROS 2015 Organizing Committee },  co-chair of IROS15 "young researcher Events"\\[5pt]
+
+
+
+2013&\textbf{Founder}, Northwestern Association for Women in Mechanical Engineering\\[5pt]
+2013&\textbf{President}, Mechanical Engineering Graduate Student Society\\[5pt]
+%2013-present&\textbf{Weekly Seminar Coordinator}, Neuroscience and Robotics Laboratory\\[5pt]
+2012-2013&\textbf{Mentor}, Northwestern University Society of Women Engineers\\[5pt]
+2011-2013&\textbf{Coach}, Mather High School Robotics Club\\[5pt]
+&\textbf{Professional Member:} 
+IEEE Robotics and Automation Society (RAS), IEEE Control Systems Society (CSS),
+Society of Women Engineers (SWE)\\[5pt]
+&\textbf{Referee:} IEEE Transactions on Robotics, IEEE Transactions on Control Systems Technology,
+%\\[5pt] &\textbf{Conference Referee:} 
+American Control Conference, IEEE International Conference on Intelligent Robots and Systems
+\end{cvtable}
+%
+\ifthenelse{\boolean{long}}{}{\newpage}
+\cvsect{Fellowships, Honors, and Awards}
+\begin{cvtable}
+2014&%
+Martin Outstanding Doctoral Fellowship 
+(M.E. Department, Northwestern University)\\[5pt]
+%
+2012-2014&%
+NIH T32 Trainee Fellowship, Pathophysiology and Rehabilitation of Neural Dysfunction (PRND) 
+(Northwestern University)\\[5pt]
+%
+2012&%
+Graduate Student Leadership and Service Award 
+(M.E. Department,  Northwestern University)\\[5pt]
+%
+2012&%
+National Science Foundation Travel Scholarship\\[5pt]
+%
+2010&%
+Walter P. Murphy Fellowship 
+(M.E. Department, Northwestern University)\\[5pt]
+%
+2006&%
+Phillip R. Jackson Engineering Sciences Prize 
+(Thayer School of Engineering, Dartmouth College)\\[5 pt]%
+%
+2005&%
+Intel Science Talent Search Semifinalist
+\end{cvtable}
+%
+\cvsect{Teaching Experience}
+\begin{cvtable}
+&\bf{Northwestern University}\\
+2013&%
+\emph{Teaching Assistant: Everything is the Same: Modeled Systems (Coursera)}%
+\ifthenelse{\boolean{long}}{\\ & Designed demonstration, participated in on-campus meetings, monitored discussion forums in the Massive Open Online Course (MOOC) format}{}\\[5pt]
+
+%
+&\bf{Dartmouth College}\\
+2008&\emph{Teaching Assistant: Digital Electronics}\\ 
+%&Undergraduate course on Digital electronic design using VHDL and field-programmable gate arrays (FPGA).  Graded exams and homework, held office hours, lead laboratory sections and discussion.\\[5pt]
+%&\bf{Dartmouth College}\\
+2007&\emph{Teaching Assistant: Thermodynamics} 
+%&Undergraduate Engineering Course introducing students to the principles of thermodynamics.  Graded exams and homework, and held office hours.
+\ifthenelse{\boolean{long}}{\\ &Graded exams and homework, held office hours, led laboratory sections and discussion.}{}
+\end{cvtable}
+
+\ifthenelse{\boolean{long}}{\newpage}{}
+
+\bibliographystyle{IEEEtranmynoline}
+  \begingroup
+    \makeatletter
+    \let\@bibitem\saved@bibitem
+    \nobibliography{MyPublications.bib}
+  \endgroup
+
+%\nobibliography{MyPublications.bib}
+
+
+\cvsect{Journal Articles}
+ \begin{cvbiblist}
+\item \bibentry{TRO2013}
+\suspend{cvbiblist}
+
+\cvsect{Peer Reviewed Conference Proceedings}
+\resume{cvbiblist}
+%\item \bibentry{ICRA2014}
+\item \bibentry{IROS2014}
+\item \bibentry{IROS2013}
+\item \bibentry{CDC2013}
+ \item \bibentry{ACC2013}
+ \item \bibentry{CDC2012}
+ \item \bibentry{IROS2012}
+ \item \bibentry{MDM2012}
+ \suspend{cvbiblist}
+
+\cvsect{Manuscripts Under Review}
+\resume{cvbiblist}
+\item \bibentry{TRO2014}
+\item \bibentry{Automatica2014}
+\item \bibentry{icra2015}
+\end{cvbiblist}
+
+%\cvsect{Technical Skills}
+%\hspace{20 pt} Mathematica, Matlab, Python, C/C++, Emacs, LaTeX
+
+\end{document}
